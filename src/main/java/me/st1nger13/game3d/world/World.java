@@ -3,6 +3,7 @@ package me.st1nger13.game3d.world;
 import me.st1nger13.game3d.GameHelper;
 import me.st1nger13.game3d.mechanics.Mesh;
 import me.st1nger13.game3d.mechanics.render.gui.Texture;
+import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,7 @@ public class World {
                 .setRotation(0f, 0f, 0f)
                 .setScale(1f)
                 .build() ;
+        astroEntity.getMesh().cullFace = GL11.GL_FRONT ;
         entities.add(astroEntity) ;
 
         Entity sunEntity = Entity.newBuilder()
