@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs/jar', include: '*.jar')
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
+}
+
