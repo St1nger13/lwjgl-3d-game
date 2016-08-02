@@ -9,6 +9,7 @@ import me.st1nger13.game3d.mechanics.render.gui.Sprite;
 import me.st1nger13.game3d.utils.events.KeyboardKeyEvent;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
 
 /**
  * Created by st1nger13 on 27.07.16.
@@ -26,7 +27,7 @@ public class MainMenuScreen implements Screen {
         Sprite sprite = new Sprite(1, "mainMenu/bg") ;
         float scaleArg = (float) Display.getWidth() / (float) Display.getHeight() ;
         sprite.setHeight(scaleArg) ;
-        sprite.setY(-(scaleArg - 1)) ;
+        sprite.setY((Display.getWidth() > Display.getHeight()) ? -(scaleArg - 1) : 0) ;
         group.add(sprite) ;
 
         renderEngine.GUI.setRootElement(group) ;
@@ -39,6 +40,9 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void draw() {
+        GL11.glClearColor(0f, 0f, 0f, 1f) ;
+        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT) ;
+
         renderEngine.draw() ;
     }
 

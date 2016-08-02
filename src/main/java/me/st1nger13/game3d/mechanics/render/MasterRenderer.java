@@ -21,6 +21,6 @@ public class MasterRenderer extends Renderer {
     @Override
     public void draw() {
         ENTITIES.draw() ;
-        //GUI.draw() ;
+        GUI.draw() ;
     }
 }

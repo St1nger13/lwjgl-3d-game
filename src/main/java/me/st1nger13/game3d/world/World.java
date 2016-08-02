@@ -82,7 +82,7 @@ public class World {
                 .setRotation(0f, 0f, 0f)
                 .setScale(1f)
                 .build() ;
-        astroEntity.getMesh().cullFace = GL11.GL_FRONT ;
+        //astroEntity.getMesh().cullFace = GL11.GL_FRONT ;
         entities.add(astroEntity) ;
 
         Entity sunEntity = Entity.newBuilder()

@@ -17,7 +17,7 @@ public class DisplayManager {
 
     public static final float FOV = 70 ;         // Field Of View in View Frustum
     public static final float NEAR_PLANE = 0.1f ;
-    public static final float FAR_PLANE = 14000 ;
+    public static final float FAR_PLANE = 16000 ;
 
     public static void createDisplay() {
         ContextAttribs attribs = new ContextAttribs(3, 2)
@@ -35,7 +35,7 @@ public class DisplayManager {
             if(!isProperModeFound)
                 Display.setDisplayMode( new DisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT)) ;
 
-            Display.create(new PixelFormat(), attribs) ;
+            Display.create(new PixelFormat().withSamples(8).withDepthBits(24), attribs) ;
             setTitle("Test screen") ;
         } catch( LWJGLException e ) {
             e.printStackTrace() ;
