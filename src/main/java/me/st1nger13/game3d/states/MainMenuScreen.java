@@ -25,9 +25,8 @@ public class MainMenuScreen implements Screen {
 
         GroupGui group = new GroupGui(0) ;
         Sprite sprite = new Sprite(1, "mainMenu/bg") ;
-        float scaleArg = (float) Display.getWidth() / (float) Display.getHeight() ;
-        sprite.setHeight(scaleArg) ;
-        sprite.setY((Display.getWidth() > Display.getHeight()) ? -(scaleArg - 1) : 0) ;
+        sprite.setWidth((float) Display.getHeight() / (float) Display.getWidth()) ;
+        sprite.setX(0.5f - sprite.getWidth() / 2) ;
         group.add(sprite) ;
 
         renderEngine.GUI.setRootElement(group) ;

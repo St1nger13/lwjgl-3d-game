@@ -8,7 +8,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 public class Camera {
     private final float MIN_DISTANCE = 20f ;
-    private final float MAX_DISTANCE = 300f ;
+    private final float MAX_DISTANCE = 4000f ;
     private final Vector3f targetPosition = new Vector3f(409.5f, -41f, 646.5f) ;
     private Vector3f position = new Vector3f(0, 0, 0);
     private float pitch = 0f;
