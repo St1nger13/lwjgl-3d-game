@@ -1,13 +1,9 @@
 package me.st1nger13.game3d.states;
 
-import com.google.common.eventbus.Subscribe;
 import me.st1nger13.game3d.mechanics.Buses;
-import me.st1nger13.game3d.mechanics.managers.ScreenManager;
 import me.st1nger13.game3d.mechanics.render.MasterRenderer;
 import me.st1nger13.game3d.mechanics.render.SkyboxRenderer;
-import me.st1nger13.game3d.utils.events.KeyboardKeyEvent;
 import me.st1nger13.game3d.world.World;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -30,9 +26,7 @@ public class InGameScreen implements Screen {
     }
 
     @Override
-    public void update(float delta) {
-
-    }
+    public void update(float delta) {}
 
     @Override
     public void draw() {
@@ -46,11 +40,5 @@ public class InGameScreen implements Screen {
     @Override
     public void dispose() {
 
-    }
-
-    @Subscribe
-    public void handleKeyboardKeyEvent(KeyboardKeyEvent event) {
-/*        if(event.keyCode == Keyboard.KEY_SPACE && event.isJustPressed)
-            ScreenManager.setScreen(new MainMenuScreen()) ;*/
     }
 }

@@ -1,7 +1,6 @@
 package me.st1nger13.game3d;
 
 import me.st1nger13.game3d.mechanics.Buses;
-import me.st1nger13.game3d.mechanics.handlers.GlobalKeysHandler;
 import me.st1nger13.game3d.mechanics.managers.DisplayManager;
 import me.st1nger13.game3d.mechanics.managers.ScreenManager;
 import me.st1nger13.game3d.states.MainMenuScreen;
@@ -21,7 +20,6 @@ public class Game {
     private static Game instance ;
     private GameSettings settings ;
 
-
     static {
         instance = new Game() ;
     }
@@ -34,7 +32,6 @@ public class Game {
 
     public Game create() {
         settings = new GameSettings() ;
-        new GlobalKeysHandler() ;
         DisplayManager.createDisplay() ;
         ScreenManager.setScreen(new MainMenuScreen()) ;
         return this ;
@@ -47,6 +44,7 @@ public class Game {
             ScreenManager.getCurrentScreen().draw() ;
 
             // Handle inputs
+            // TODO: Temporary
             while(Keyboard.next()) {
                 if(Keyboard.getEventKeyState())
                     Buses.KEYBOARD.post(new KeyboardKeyEvent(Keyboard.getEventKey(), true)) ;
@@ -55,10 +53,6 @@ public class Game {
             }
         }
 
-        DisplayManager.destroyDisplay() ;
-    }
-
-    public GameSettings getSettings() {
-        return settings ;
+        GameHelper.loader.cleanUp() ;DisplayManager.destroyDisplay() ;
     }
 }

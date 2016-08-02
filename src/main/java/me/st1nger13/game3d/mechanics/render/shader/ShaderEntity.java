@@ -53,8 +53,4 @@ public class ShaderEntity extends ShaderProgram{
     protected void bindAttributes() {
         super.bindAttribute(0, "position");
     }
-
-
-
-
 }

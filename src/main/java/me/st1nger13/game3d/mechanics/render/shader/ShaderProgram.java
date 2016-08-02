@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 
-import me.st1nger13.game3d.Game;
 import me.st1nger13.game3d.GameHelper;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;

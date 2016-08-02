@@ -8,5 +8,4 @@ import com.google.common.eventbus.EventBus;
  */
 public class Buses {
     public static final EventBus KEYBOARD = new EventBus() ;
-    public static final EventBus WORLD = new EventBus() ;
 }

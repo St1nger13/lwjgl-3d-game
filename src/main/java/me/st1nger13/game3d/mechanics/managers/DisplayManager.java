@@ -1,6 +1,5 @@
 package me.st1nger13.game3d.mechanics.managers;
 
-import me.st1nger13.game3d.Game;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.*;
 import org.lwjgl.opengl.DisplayMode;
@@ -36,7 +35,7 @@ public class DisplayManager {
                 Display.setDisplayMode( new DisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT)) ;
 
             Display.create(new PixelFormat().withSamples(8).withDepthBits(24), attribs) ;
-            setTitle("Test screen") ;
+            setTitle("Cool game!") ;
         } catch( LWJGLException e ) {
             e.printStackTrace() ;
             System.exit(0) ;
@@ -58,13 +57,5 @@ public class DisplayManager {
 
     public static void setTitle( String title ) {
         Display.setTitle(title) ;
-    }
-
-    public static void toggleFullscreenMode() {
-        try {
-            Display.setFullscreen(true) ;
-        } catch (LWJGLException e) {
-            Game.logger.warning("Can't toggle Fullscreen Mode!") ;
-        }
     }
 }

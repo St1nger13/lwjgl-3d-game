@@ -4,7 +4,6 @@ import me.st1nger13.game3d.utils.MathHelper;
 import me.st1nger13.game3d.world.Camera;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
-import org.lwjgl.util.vector.Vector4f;
 
 public class ShaderSkybox extends ShaderProgram {
 

@@ -40,8 +40,4 @@ public class ShaderGui extends ShaderProgram{
     protected void bindAttributes() {
         super.bindAttribute(0, "position");
     }
-
-
-
-
 }

@@ -3,8 +3,6 @@ package me.st1nger13.game3d.mechanics.render;
 import me.st1nger13.game3d.GameHelper;
 import me.st1nger13.game3d.mechanics.Mesh;
 import me.st1nger13.game3d.mechanics.managers.DisplayManager;
-import me.st1nger13.game3d.mechanics.render.gui.Gui;
-import me.st1nger13.game3d.mechanics.render.shader.ShaderGui;
 import me.st1nger13.game3d.mechanics.render.shader.ShaderSkybox;
 import me.st1nger13.game3d.utils.MathHelper;
 import me.st1nger13.game3d.world.World;
@@ -22,60 +20,58 @@ public class SkyboxRenderer extends Renderer {
     private static final float SIZE = 9000f ;
     private static float blendFactor = 1f ;
 
-    private static final float[] VERTICES =
-            {
-                    -SIZE,  SIZE, -SIZE,
-                    -SIZE, -SIZE, -SIZE,
-                    SIZE, -SIZE, -SIZE,
-                    SIZE, -SIZE, -SIZE,
-                    SIZE,  SIZE, -SIZE,
-                    -SIZE,  SIZE, -SIZE,
+    private static final float[] VERTICES = {
+            -SIZE,  SIZE, -SIZE,
+            -SIZE, -SIZE, -SIZE,
+            SIZE, -SIZE, -SIZE,
+            SIZE, -SIZE, -SIZE,
+            SIZE,  SIZE, -SIZE,
+            -SIZE,  SIZE, -SIZE,
 
-                    -SIZE, -SIZE,  SIZE,
-                    -SIZE, -SIZE, -SIZE,
-                    -SIZE,  SIZE, -SIZE,
-                    -SIZE,  SIZE, -SIZE,
-                    -SIZE,  SIZE,  SIZE,
-                    -SIZE, -SIZE,  SIZE,
+            -SIZE, -SIZE,  SIZE,
+            -SIZE, -SIZE, -SIZE,
+            -SIZE,  SIZE, -SIZE,
+            -SIZE,  SIZE, -SIZE,
+            -SIZE,  SIZE,  SIZE,
+            -SIZE, -SIZE,  SIZE,
 
-                    SIZE, -SIZE, -SIZE,
-                    SIZE, -SIZE,  SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    SIZE,  SIZE, -SIZE,
-                    SIZE, -SIZE, -SIZE,
+            SIZE, -SIZE, -SIZE,
+            SIZE, -SIZE,  SIZE,
+            SIZE,  SIZE,  SIZE,
+            SIZE,  SIZE,  SIZE,
+            SIZE,  SIZE, -SIZE,
+            SIZE, -SIZE, -SIZE,
 
-                    -SIZE, -SIZE,  SIZE,
-                    -SIZE,  SIZE,  SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    SIZE, -SIZE,  SIZE,
-                    -SIZE, -SIZE,  SIZE,
+            -SIZE, -SIZE,  SIZE,
+            -SIZE,  SIZE,  SIZE,
+            SIZE,  SIZE,  SIZE,
+            SIZE,  SIZE,  SIZE,
+            SIZE, -SIZE,  SIZE,
+            -SIZE, -SIZE,  SIZE,
 
-                    -SIZE,  SIZE, -SIZE,
-                    SIZE,  SIZE, -SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    SIZE,  SIZE,  SIZE,
-                    -SIZE,  SIZE,  SIZE,
-                    -SIZE,  SIZE, -SIZE,
+            -SIZE,  SIZE, -SIZE,
+            SIZE,  SIZE, -SIZE,
+            SIZE,  SIZE,  SIZE,
+            SIZE,  SIZE,  SIZE,
+            -SIZE,  SIZE,  SIZE,
+            -SIZE,  SIZE, -SIZE,
 
-                    -SIZE, -SIZE, -SIZE,
-                    -SIZE, -SIZE,  SIZE,
-                    SIZE, -SIZE, -SIZE,
-                    SIZE, -SIZE, -SIZE,
-                    -SIZE, -SIZE,  SIZE,
-                    SIZE, -SIZE,  SIZE
-            };
+            -SIZE, -SIZE, -SIZE,
+            -SIZE, -SIZE,  SIZE,
+            SIZE, -SIZE, -SIZE,
+            SIZE, -SIZE, -SIZE,
+            -SIZE, -SIZE,  SIZE,
+            SIZE, -SIZE,  SIZE
+    };
 
-    private static String[] TEXTURE_FILES =
-            {
-                    "right",
-                    "left",
-                    "top",
-                    "bottom",
-                    "back",
-                    "front"
-            } ;
+    private static String[] TEXTURE_FILES = {
+            "right",
+            "left",
+            "top",
+            "bottom",
+            "back",
+            "front"
+    } ;
 
     private Mesh cube ;
     private int textureDayID ;
@@ -111,7 +107,6 @@ public class SkyboxRenderer extends Renderer {
         Matrix4f matrix = MathHelper.createTransformationMatrix(new Vector3f(0,0,0), new Vector3f(angle, 0, 0), 1) ;
         shaderSkybox.loadTransformationMatrix(matrix) ;
         shaderSkybox.loadSkyColor(0.3f, 0.6f, 1f) ;
-        //shaderSkybox.loadViewModeState(RenderManager.getViewMode(), RenderManager.getColorBlendFactor()) ;
         GL30.glBindVertexArray(cube.vaoID) ;
         GL20.glEnableVertexAttribArray(0) ;
 

@@ -34,10 +34,10 @@ public class Loader {
     public Mesh loadToVAO(float[] positions, float[] textureCoords, int[] indices, float[] normals) {
         int vaoID = createAndBindVAO() ;
         bindIndicesBuffer(vaoID, indices) ;
-        storeDataInAttributeList(vaoID, (byte) 3, 0, positions) ;
-        storeDataInAttributeList(vaoID, (byte) 2, 1, textureCoords) ;
-        storeDataInAttributeList(vaoID, (byte) 3, 2, normals) ;
-        unbindVAO() ;
+        putData(vaoID, (byte) 3, 0, positions) ;
+        putData(vaoID, (byte) 2, 1, textureCoords) ;
+        putData(vaoID, (byte) 3, 2, normals) ;
+        GL30.glBindVertexArray(0) ;
 
         return new Mesh(vaoID, indices.length) ;
     }
@@ -45,10 +45,10 @@ public class Loader {
     public Mesh loadToVAO( float[] positions, float[] textureCoords, int[] indices) {
         int vaoID = createAndBindVAO() ;
         bindIndicesBuffer(vaoID, indices) ;
-        storeDataInAttributeList(vaoID, (byte) 3, 0, positions) ;
-        storeDataInAttributeList(vaoID, (byte) 2, 1, textureCoords) ;
-        //storeDataInAttributeList((byte) 3, 2, normals) ;
-        unbindVAO() ;
+        putData(vaoID, (byte) 3, 0, positions) ;
+        putData(vaoID, (byte) 2, 1, textureCoords) ;
+        //putData((byte) 3, 2, normals) ;
+        GL30.glBindVertexArray(0) ;
 
         return new Mesh(vaoID, indices.length) ;
     }
@@ -59,14 +59,13 @@ public class Loader {
 
     public Mesh loadToVAO(float[] positions, int dimensions) {
         int vaoID = createAndBindVAO() ;
-        this.storeDataInAttributeList(vaoID, (byte)dimensions, 0, positions) ;
-        unbindVAO() ;
+        this.putData(vaoID, (byte)dimensions, 0, positions) ;
+        GL30.glBindVertexArray(0) ;
 
         return new Mesh(vaoID, positions.length/2) ;
     }
 
-    public Texture loadTexture(String fileName)
-    {
+    public Texture loadTexture(String fileName) {
         org.newdawn.slick.opengl.Texture texture = null ;
         try {
             texture = TextureLoader.getTexture("PNG", new FileInputStream(GameHelper.files.getFile("resources/textures/" + fileName + ".png"))) ;
@@ -76,19 +75,9 @@ public class Loader {
             GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -1.4f) ;
 
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            /*try {
-                texture = TextureLoader.getTexture( "PNG", new FileInputStream( "res/textures/empty.png" )) ;
-            } catch (IOException e1) {
-                e1.printStackTrace();
-                //Debuger.logError("File of Empty Texture was missed!") ;
-            }
-            e.printStackTrace();
-            //Debuger.logWarning("File of texture was missed!") ;*/
+        catch (IOException e) {
+            e.printStackTrace() ;
         }
-
         int textureID = texture.getTextureID() ;
         textures.add( textureID ) ;
 
@@ -128,7 +117,7 @@ public class Loader {
         return vaoID ;
     }
 
-    private void storeDataInAttributeList(int vaoID, byte coordSize, int attribNumber, float[] data ) {
+    private void putData(int vaoID, byte coordSize, int attribNumber, float[] data ) {
         int vboID = GL15.glGenBuffers() ;
         vaoMap.get(vaoID).add(vboID) ;
         GL15.glBindBuffer( GL15.GL_ARRAY_BUFFER, vboID ) ;
@@ -136,11 +125,6 @@ public class Loader {
         GL15.glBufferData( GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW ) ;
         GL20.glVertexAttribPointer( attribNumber, coordSize, GL11.GL_FLOAT, false, 0, 0 ) ;
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0 ) ;
-    }
-
-    private void unbindVAO()
-    {
-        GL30.glBindVertexArray(0) ;
     }
 
     private FloatBuffer storeDataInFloatBuffer(float[] data) {
